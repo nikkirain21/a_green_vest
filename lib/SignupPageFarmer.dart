@@ -145,8 +145,8 @@ class _SignupPageFarmerState extends State<SignupPageFarmer> {
                 minWidth: double.infinity,
                 height: 60,
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage()));
+                  //improve or delete OTP process
+                  openDialog();
                 },
                 // defining the shape
                 color: Color(0xff57B894),
@@ -195,6 +195,22 @@ class _SignupPageFarmerState extends State<SignupPageFarmer> {
         ),
       ),
     );
+  }
+
+  Future openDialog() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            title: Text(
+                'Please input One-Time Password sent to your Contact Number'),
+            content: TextField(
+              autofocus: true,
+            ),
+            actions: [TextButton(onPressed: submit, child: Text('SUBMIT'))],
+          ));
+
+  void submit() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }
 
