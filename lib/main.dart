@@ -1,6 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:developer';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'LoginPage.dart';
+import 'SignupPageFarmer.dart';
+import 'SignupPageUser.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -47,7 +54,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Text(
                     "Bringing growth, ingenuity, and experience to farmers.",
@@ -58,7 +65,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 40,
                   ),
                   Text.rich(
                     TextSpan(
@@ -70,8 +77,16 @@ class HomePage extends StatelessWidget {
                         children: <TextSpan>[
                           TextSpan(
                               text: 'Log in',
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()));
+                                },
                               style: TextStyle(
                                 color: Color(0xff57B894),
+                                fontWeight: FontWeight.bold,
                                 decoration: TextDecoration.underline,
                               )),
                         ]),
@@ -85,7 +100,10 @@ class HomePage extends StatelessWidget {
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignupPageFarmer()));
                     },
                     // defining the shape
                     color: Color(0xff57B894),
@@ -105,7 +123,10 @@ class HomePage extends StatelessWidget {
                     minWidth: double.infinity,
                     height: 60,
                     onPressed: () {
-                      //Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignupPageUser()));
                     },
                     shape: RoundedRectangleBorder(
                         side: BorderSide(color: const Color(0xff57B894)),
